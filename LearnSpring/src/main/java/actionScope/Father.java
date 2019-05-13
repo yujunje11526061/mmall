@@ -13,8 +13,7 @@ public class Father {
 
     @Override
     public String toString() {
-        return "Father{" +
-                "son=" + son +
-                '}';
+        return "self=" +super.toString()+
+                "----> son=" + son;
     }
 }
