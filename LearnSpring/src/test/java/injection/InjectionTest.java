@@ -14,7 +14,7 @@ public class InjectionTest {
     @Test
     public void test(){
         System.out.println("现在开始属性注入实验");
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring2.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("injection.xml");
         Bean bean1 = context.getBean("bean1", Bean.class);
         Bean bean2 = context.getBean("bean2", Bean.class);
         List<Bean> list = new ArrayList<>();
