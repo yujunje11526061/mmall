@@ -18,7 +18,6 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-    <!--上面定于过滤器，下面定义过滤器和要捕获哪些URL-->
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -35,7 +34,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:applicationContext.xml
+            classpath*:applicationContext.xml
         </param-value>
     </context-param>
 
