@@ -6,6 +6,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller()
@@ -100,6 +101,7 @@ public class DataBinding {
 //
 //    }
 //    输出 Group{age=26, name='Matt', user=User{age=26, name='YJJ'}}。
+//    限定只能为POST
     @RequestMapping(value = "json.do",method = RequestMethod.POST,consumes = "application/json",produces ="application/json")
     public String json(@RequestBody Group group) {
         return group.toString();
@@ -114,6 +116,20 @@ public class DataBinding {
     @RequestMapping(value = "xml.do", method = RequestMethod.POST,consumes = "application/xml",produces ="application/xml")
     public String xml(@RequestBody XMLRoot xmlRoot) {
         return xmlRoot.toString();
+    }
+
+//    http://127.0.0.1:8080/date.do?data=2008-01-12
+//    输出 Sat Jan 12 00:01:00 CST 2008
+    @RequestMapping(value = "date.do")
+    public String data(Date data){
+        return data.toString();
+    }
+
+//    http://127.0.0.1:8080/key/aaaaaaaaaaaaaaa 输出aaaaaaaaaaaaaaa
+//    REST的请求,映射路径写法以及参数的注解形式.
+    @RequestMapping(value = "key/{value}", method = RequestMethod.GET)
+    public String getValue(@PathVariable(name = "value") String value){
+        return value;
     }
 
 }

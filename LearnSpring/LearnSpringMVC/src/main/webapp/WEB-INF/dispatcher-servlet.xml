@@ -14,7 +14,27 @@
 
     <context:component-scan base-package="dataBinding" annotation-config="true"/>
 
-    <mvc:annotation-driven>
+
+    <!--自定义的formatter和converter分别注入的是同一个类的不同容器属性中, 有property标签的name属性指定是哪个容器-->
+    <!--<bean id="formatter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+        <!--<property name="formatters">-->
+            <!--<set>-->
+                <!--<bean id="myFormatter" class="dataBinding.formatterAndConverter.MyFormatter"/>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <bean id="converter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean id="myConverter" class="dataBinding.formatterAndConverter.MyConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--conversion-service是全局的配置,只能选一个-->
+    <!--<mvc:annotation-driven conversion-service="formatter">-->
+    <mvc:annotation-driven conversion-service="converter">
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="supportedMediaTypes">
