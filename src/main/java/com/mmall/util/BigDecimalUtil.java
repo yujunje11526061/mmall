@@ -9,7 +9,7 @@ public class BigDecimalUtil {
 
     }
 
-
+    // 商业计算中一定要用BigDecimal的String参数构造器。
     public static BigDecimal add(double v1,double v2){
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
